@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071321">
+<title>InstiNexa — Welcome Tour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--wine:#a4003c;--wine2:#c50b50;--ink:#0b1a2f;--muted:#435772;--paper:#fffafb;--pink:#f8dce8;--navy:#071321}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{background:radial-gradient(ellipse at 50% 0%,#14243a 0,#071321 58%);color:var(--ink);display:flex;align-items:center;justify-content:center;padding:22px;overflow-x:hidden}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #ed78a5;outline-offset:3px}
+.stage{width:min(100%,430px);height:min(850px,calc(100dvh - 44px));min-height:620px;position:relative}
+.carousel{height:100%;width:100%;position:relative;overflow:hidden;border-radius:39px;background:var(--paper);box-shadow:0 28px 90px #0008,0 0 0 1px #ffffff23}
+.slides{display:flex;width:600%;height:100%;transition:transform .55s cubic-bezier(.22,.8,.25,1);will-change:transform}
+.slide{width:calc(100% / 6);height:100%;flex:0 0 calc(100% / 6);position:relative;overflow:hidden;background:linear-gradient(160deg,#fffdfd,#fff7fa);padding:18px 24px 28px;display:flex;flex-direction:column}
+.status{height:20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;font-size:12px;font-weight:700;position:relative;z-index:5}.status-icons{display:flex;gap:4px;align-items:center;font-size:11px}
+.top-actions{height:37px;display:flex;justify-content:flex-end;align-items:center;position:relative;z-index:5}.skip{border:0;background:transparent;color:#34445c;font-size:12px;font-weight:500;padding:8px 0 8px 12px}
+.art{height:43%;min-height:235px;max-height:360px;position:relative;display:flex;align-items:center;justify-content:center;margin:2px -9px 15px;flex-shrink:0}.blob{position:absolute;width:77%;height:80%;border-radius:43% 57% 52% 48%/48% 39% 61% 52%;background:linear-gradient(145deg,#ffe6ef,#f3d4e4 65%,#eee1ff);opacity:.92;transform:rotate(-7deg)}
+h1,h2,p{margin-top:0}.copy h1{font-size:28px;line-height:1.23;letter-spacing:-.85px;margin:0 0 14px;font-weight:800}.copy h1 .accent{color:var(--wine)}.copy p{font-size:14px;line-height:1.72;color:var(--muted);margin:0;max-width:350px}.progress{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:21px 0 5px;flex-shrink:0}.dots{display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:20px;background:#d5d9e1;transition:width .25s,background .25s}.dot.active{width:24px;background:linear-gradient(90deg,var(--wine),var(--wine2))}
+.next{width:47px;height:47px;border:0;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#d20c58,#8e0034);box-shadow:0 7px 18px #a4003c36;flex-shrink:0;transition:transform .18s}.next:active{transform:scale(.93)}
+/* Screen 1: photo-led welcome */
+.slide-cover{color:white;background:#071321}.cover-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.slide-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#03132608 15%,#0613221c 38%,#061322f0 70%,#111022 100%)}.slide-cover .status,.slide-cover .top-actions,.slide-cover .cover-brand,.slide-cover .copy,.slide-cover .progress{position:relative;z-index:2}.slide-cover .skip{color:#fff}.cover-brand{display:flex;align-items:center;justify-content:center;gap:11px;margin:22px 0 0}.logo-mark{width:53px;height:53px;border-radius:50%;background:linear-gradient(145deg,#d20b53,#8b0032);color:#fff;border:3px solid #efb4ca;display:grid;place-items:center;box-shadow:0 8px 25px #0003;font-size:21px}.logo-type{font-size:24px;font-weight:800;letter-spacing:-.8px}.logo-type span{color:#f52b78}.logo-sub{font-size:10px;margin-top:3px;color:inherit;opacity:.85}.cover-spacer{flex:1;min-height:30px}.slide-cover .copy h1{font-size:29px;line-height:1.22;margin-bottom:13px}.slide-cover .copy p{color:#f1f3f8;font-size:14px;line-height:1.75}.slide-cover .dot{background:#ffffff69}.slide-cover .dot.active{background:#e91a68}
+/* screen 2: map on a tilted phone */
+.phone-art{position:relative;width:66%;height:96%;max-height:300px;min-height:230px;border:7px solid #182332;border-radius:34px;background:#f8fbff;overflow:hidden;box-shadow:0 19px 35px #10182830;transform:rotate(-5deg);z-index:2}.phone-notch{position:absolute;z-index:3;top:0;left:50%;transform:translateX(-50%);height:13px;width:72px;border-radius:0 0 12px 12px;background:#182332}.map-art{position:absolute;inset:0;background-color:#e7f2e9;background-image:linear-gradient(28deg,transparent 42%,#fff 43%,#fff 47%,transparent 48%),linear-gradient(113deg,transparent 34%,#fff 35%,#fff 39%,transparent 40%),linear-gradient(80deg,transparent 68%,#d4e8d5 69%,#d4e8d5 75%,transparent 76%),linear-gradient(0deg,transparent 20%,#f7edc8 21%,#f7edc8 25%,transparent 26%)}.map-art:before,.map-art:after{content:"";position:absolute;border-radius:50%;border:2px solid #c7e1ce;width:90px;height:90px;left:25%;top:30%;box-shadow:0 0 0 12px #d9ebdd,0 0 0 24px #eaf5eb}.map-art:after{width:14px;height:14px;border:4px solid #fff;background:#1688ee;box-shadow:0 2px 6px #234;left:47%;top:48%;z-index:1}.pin{position:absolute;z-index:2;color:var(--wine);font-size:36px;filter:drop-shadow(0 4px 4px #0003)}.pin.p1{left:48%;top:28%}.pin.p2{left:22%;top:57%;font-size:23px}.map-search{position:absolute;z-index:4;top:22px;left:8px;right:8px;background:#ffffffed;border-radius:12px;padding:8px;font-size:7px;color:#66758b;box-shadow:0 4px 12px #17253a12}.map-bottom{position:absolute;z-index:4;bottom:8px;left:0;right:0;display:flex;justify-content:center}.map-bottom span{background:#b10043;color:#fff;padding:5px 14px;border-radius:30px;font-size:8px}.floating-label{position:absolute;z-index:4;right:0;top:27%;border-radius:14px;padding:11px 12px;background:#ffffffed;box-shadow:0 9px 24px #13203820;font-size:10px;font-weight:700;display:flex;gap:7px;align-items:center}.floating-label i{color:var(--wine)}.round-compass{position:absolute;z-index:4;left:7%;bottom:13%;width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#d20b55,#8d0035);color:white;font-size:22px;box-shadow:0 8px 18px #9c003b3a}
+/* destination cards */
+.stack-card{width:84%;position:relative;z-index:2;background:#fff;border-radius:23px;padding:9px 9px 16px;box-shadow:0 17px 28px #17253a1d;transform:rotate(-2deg);border:1px solid #f1eaf0}.stack-card.back{position:absolute;width:78%;height:77%;top:13%;left:12%;transform:rotate(4deg);opacity:.7}.destination-img{height:116px;width:100%;border-radius:14px;object-fit:cover;display:block}.destination-icon{position:absolute;top:-10px;left:-8px;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#cf0b54,#8e0035);color:#fff;border:3px solid #fff;font-size:17px;box-shadow:0 5px 14px #a4003c2b}.card-title{font-size:12px;font-weight:800;margin:12px 5px 12px}.card-line{font-size:10px;color:#3f506a;display:flex;gap:9px;align-items:center;margin:8px 5px}.card-line i{color:var(--wine);width:12px}.view-location{margin:14px 5px 0;background:#fae5ee;color:#8f0738;border:0;border-radius:30px;padding:10px 14px;font-size:10px;font-weight:700}
+/* map preview screen */
+.map-panel{width:88%;height:90%;max-height:285px;min-height:235px;position:relative;border-radius:25px;overflow:hidden;background-color:#e6f3e9;box-shadow:0 13px 32px #16283a19;background-image:linear-gradient(30deg,transparent 43%,#fff 44%,#fff 48%,transparent 49%),linear-gradient(115deg,transparent 36%,#fff 37%,#fff 41%,transparent 42%),linear-gradient(0deg,transparent 20%,#cfe7d3 21%,#cfe7d3 28%,transparent 29%),linear-gradient(90deg,transparent 63%,#f9ebbd 64%,#f9ebbd 70%,transparent 71%)}.map-panel:before{content:"";position:absolute;left:35%;top:25%;width:120px;height:120px;border:2px solid #c6e1cb;border-radius:50%;box-shadow:0 0 0 14px #d9ebdd,0 0 0 29px #eaf4e9}.map-panel .map-search{top:10px;left:10px;right:10px;font-size:9px;padding:11px}.map-panel .pin{font-size:24px}.map-panel .pin.a{left:23%;top:28%}.map-panel .pin.b{left:68%;top:23%}.map-panel .pin.c{left:62%;top:52%}.map-panel .pin.d{left:28%;top:64%}.blue-dot{position:absolute;left:47%;top:45%;width:23px;height:23px;border:4px solid #fff;border-radius:50%;background:#1688f0;box-shadow:0 0 0 5px #1688f02b;z-index:3}.map-filter{position:absolute;bottom:8px;left:8px;right:8px;background:#ffffffed;backdrop-filter:blur(16px);padding:6px;border-radius:17px;display:flex;gap:4px;box-shadow:0 5px 15px #24334b17}.map-filter span{flex:1;text-align:center;padding:9px 3px;border-radius:12px;font-size:8px;color:#34445c}.map-filter span i{display:block;margin-bottom:4px;color:#9a1745;font-size:13px}.map-filter .selected{background:var(--wine);color:#fff}.map-filter .selected i{color:#fff}
+/* verified info screen */
+.student-art{position:relative;width:100%;height:100%;z-index:2;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border-radius:47% 53% 25% 25%;background:linear-gradient(145deg,#f9dbe8,#fff1f5);max-height:285px}.student-art img{height:100%;width:100%;object-fit:cover;object-position:center 28%;mix-blend-mode:multiply}.verified-bubble{position:absolute;z-index:4;right:-1px;top:20%;padding:14px 13px;border-radius:16px;background:#ffffffed;box-shadow:0 10px 28px #1d2d431d;display:flex;align-items:center;gap:9px;font-size:10px;line-height:1.4;font-weight:700}.verified-bubble i{font-size:20px;color:#fff;background:#33496c;border-radius:50%;padding:5px}
+.slide-final{text-align:center}.slide-final .top-actions{margin-bottom:10px}.final-brand{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;margin-top:3px}.final-brand .logo-mark{width:64px;height:64px;font-size:25px;margin-bottom:9px}.final-brand .logo-type{font-size:25px}.final-photo-wrap{height:42%;min-height:220px;position:relative;overflow:hidden;margin:18px -24px 0;clip-path:ellipse(86% 76% at 50% 55%)}.final-photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 52%}.final-copy{position:relative;z-index:2;margin-top:15px}.final-copy h2{font-size:24px;letter-spacing:-.7px;margin:0 0 9px}.final-copy p{font-size:13px;line-height:1.6;color:var(--muted);margin:0 auto;max-width:260px}.get-started{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-radius:99px;color:#fff;background:linear-gradient(110deg,#b90046,#87002f);padding:16px 20px;margin-top:20px;font-size:13px;font-weight:700;box-shadow:0 8px 19px #a4003c2c}.skip-final{margin-top:13px;border:0;background:transparent;color:#425570;font-size:12px;padding:9px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,15px);background:#fff;color:#12233a;border-radius:99px;padding:12px 17px;box-shadow:0 8px 28px #0003;font-size:12px;opacity:0;transition:.25s;pointer-events:none;z-index:20;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){body{padding:30px}.stage{width:390px;height:min(840px,calc(100dvh - 60px))}.slide{padding-left:25px;padding-right:25px}.art{height:42%}.copy h1{font-size:29px}}
+@media(max-width:420px){body{padding:0;background:var(--paper)}.stage{width:100%;height:100dvh;min-height:590px}.carousel{border-radius:0;box-shadow:none}.slide{padding-top:max(15px,env(safe-area-inset-top));padding-bottom:max(18px,env(safe-area-inset-bottom));padding-left:24px;padding-right:24px}.art{height:42%;min-height:220px}.copy h1{font-size:28px}.slide-cover .copy h1{font-size:29px}.progress{padding-bottom:8px}.final-photo-wrap{margin-left:-24px;margin-right:-24px}}
+@media(max-height:700px){.stage{height:100dvh;min-height:0}.slide{padding-top:12px;padding-bottom:15px}.art{height:37%;min-height:190px;margin-bottom:10px}.copy h1{font-size:25px}.copy p{font-size:12px;line-height:1.6}.progress{padding-top:12px}.final-photo-wrap{height:34%;min-height:170px}.final-copy{margin-top:8px}.final-copy h2{font-size:21px}.get-started{margin-top:12px;padding:13px 18px}}
+@media(prefers-reduced-motion:reduce){.slides,.dot,.next,.toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="stage">
+ <div class="carousel" aria-label="InstiNexa onboarding tour">
+  <div class="slides" id="slides">
+   <!-- 1: Welcome -->
+   <section class="slide slide-cover" aria-label="Step 1 of 5">
+    <img class="cover-photo" src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1100&q=90" alt="University campus and clock tower">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="cover-brand"><span class="logo-mark"><i class="fa-solid fa-landmark"></i></span><div><div class="logo-type">Insti<span>Nexa</span></div><div class="logo-sub">LAUTECH · Ogbomoso</div></div></div>
+    <div class="cover-spacer"></div>
+    <div class="copy"><h1>Your Campus<br>Guide, <span class="accent">Simplified.</span></h1><p>Discover buildings, departments, facilities and everything you need to navigate your campus with ease.</p></div>
+    <div class="progress"><div class="dots" aria-label="Tour progress"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><button class="next" data-next aria-label="Next step"><i class="fa-solid fa-arrow-right"></i></button></div>
+   </section>
+   <!-- 2: Find your way -->
+   <section class="slide" aria-label="Step 2 of 5">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="art"><div class="blob"></div><div class="phone-art"><div class="phone-notch"></div><div class="map-art"><div class="map-search"><i class="fa-solid fa-magnifying-glass"></i> &nbsp; Search on InstiNexa</div><i class="fa-solid fa-location-dot pin p1"></i><i class="fa-solid fa-location-dot pin p2"></i><div class="map-bottom"><span>Campus map</span></div></div></div><div class="floating-label"><i class="fa-solid fa-landmark"></i> Main Library</div><div class="round-compass"><i class="fa-solid fa-location-arrow"></i></div></div>
+    <div class="copy"><h1>Find Your Way<br><span class="accent">Around Campus</span></h1><p>Search for any building, department or facility and get directions, photos and essential details.</p></div>
+    <div class="progress"><div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><button class="next" data-next aria-label="Next step"><i class="fa-solid fa-arrow-right"></i></button></div>
+   </section>
+   <!-- 3: Destination cards -->
+   <section class="slide" aria-label="Step 3 of 5">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="art"><div class="blob"></div><div class="stack-card back"></div><article class="stack-card"><span class="destination-icon"><i class="fa-solid fa-landmark"></i></span><img class="destination-img" src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=85" alt="University academic building"><div class="card-title">Lecture Theatre 1</div><div class="card-line"><i class="fa-solid fa-people-group"></i> Lecture Theatre</div><div class="card-line"><i class="fa-solid fa-users"></i> Seating Capacity: 300</div><button class="view-location" data-message="Location details will open when the campus directory is connected.">View Location &nbsp; <i class="fa-solid fa-arrow-right"></i></button></article></div>
+    <div class="copy"><h1>Explore<br><span class="accent">Key Destinations</span></h1><p>Browse through faculties, lecture theatres, laboratories, libraries, medical facilities and more.</p></div>
+    <div class="progress"><div class="dots"><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><button class="next" data-next aria-label="Next step"><i class="fa-solid fa-arrow-right"></i></button></div>
+   </section>
+   <!-- 4: Map -->
+   <section class="slide" aria-label="Step 4 of 5">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="art"><div class="map-panel"><div class="map-search"><i class="fa-solid fa-magnifying-glass"></i> &nbsp; Search on campus...</div><i class="fa-solid fa-location-dot pin a"></i><i class="fa-solid fa-location-dot pin b"></i><i class="fa-solid fa-location-dot pin c"></i><i class="fa-solid fa-location-dot pin d"></i><span class="blue-dot"></span><div class="map-filter"><span class="selected"><i class="fa-solid fa-location-dot"></i>All</span><span><i class="fa-solid fa-landmark"></i>Faculties</span><span><i class="fa-solid fa-flask"></i>Labs</span><span><i class="fa-solid fa-book-open"></i>Libraries</span></div></div></div>
+    <div class="copy"><h1>Navigate with<br><span class="accent">Campus Map</span></h1><p>Use the interactive campus map to explore locations, find nearby places and plan your movement.</p></div>
+    <div class="progress"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div><button class="next" data-next aria-label="Next step"><i class="fa-solid fa-arrow-right"></i></button></div>
+   </section>
+   <!-- 5: Reliable information -->
+   <section class="slide" aria-label="Step 5 of 5">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="art"><div class="blob"></div><div class="student-art"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=85" alt="Students on a university campus"></div><div class="verified-bubble"><i class="fa-solid fa-check"></i><span>Location<br>Information</span></div></div>
+    <div class="copy"><h1>Reliable &amp;<br><span class="accent">Helpful Information</span></h1><p>Find useful location details, photographs and directions. Information can be checked and updated as the campus directory grows.</p></div>
+    <div class="progress"><div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span></div><button class="next" data-next aria-label="Finish tour"><i class="fa-solid fa-arrow-right"></i></button></div>
+   </section>
+   <!-- Final screen -->
+   <section class="slide slide-final" aria-label="Tour complete">
+    <div class="status"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+    <div class="top-actions"><button class="skip" data-skip>Skip</button></div>
+    <div class="final-brand"><span class="logo-mark"><i class="fa-solid fa-landmark"></i></span><div class="logo-type">Insti<span>Nexa</span></div><div class="logo-sub" style="color:#435772">LAUTECH · Ogbomoso</div></div>
+    <div class="final-copy"><h2>Ready to Explore?</h2><p>You’re all set! Start discovering your campus now.</p></div>
+    <div class="final-photo-wrap"><img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=90" alt="University campus grounds"></div>
+    <button class="get-started" id="getStarted">Get Started <i class="fa-solid fa-arrow-right"></i></button>
+    <button class="skip-final" id="skipFinal">Skip for now</button>
+   </section>
+  </div>
+ </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+ const slides=document.getElementById('slides');
+ const total=6; let index=0;
+ const toast=document.getElementById('toast'); let timer;
+ function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),2600)}
+ function goTo(n){index=Math.max(0,Math.min(total-1,n));slides.style.transform=`translateX(-${index*(100/total)}%)`;document.querySelectorAll('.slide').forEach((s,i)=>s.setAttribute('aria-hidden',i===index?'false':'true'))}
+ function finish(){notify('Welcome to InstiNexa! Connect your Explore Campus page here.')}
+ document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{if(index===total-2)goTo(total-1);else if(index<total-1)goTo(index+1);else finish()}));
+ document.querySelectorAll('[data-skip]').forEach(btn=>btn.addEventListener('click',()=>goTo(total-1)));
+ document.querySelectorAll('[data-message]').forEach(btn=>btn.addEventListener('click',()=>notify(btn.dataset.message)));
+ document.getElementById('getStarted').addEventListener('click',finish);
+ document.getElementById('skipFinal').addEventListener('click',finish);
+ let startX=0,startY=0;
+ const carousel=document.querySelector('.carousel');
+ carousel.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX;startY=e.changedTouches[0].clientY},{passive:true});
+ carousel.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)){goTo(index+(dx<0?1:-1))}},{passive:true});
+ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(index+1);if(e.key==='ArrowLeft')goTo(index-1);if(e.key==='Escape')goTo(total-1)});
+ goTo(0);
+})();
+</script>
+</body>
+</html>
