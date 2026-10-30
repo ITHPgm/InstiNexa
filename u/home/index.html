@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#a50042">
+<title>InstiNexa — Campus Discovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--wine:#a60043;--wine2:#c01459;--navy:#07172d;--ink:#101d34;--muted:#586b81;--pink:#f9e6ef;--line:#e6e8ee;--glass:rgba(255,255,255,.76);--shadow:0 14px 38px rgba(23,25,47,.10)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% 12%,#6f1236 0,transparent 42%),radial-gradient(ellipse at 90% 90%,#8b123c 0,transparent 42%),#310b20;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;display:flex;justify-content:center;padding:24px 12px}
+button,input{font:inherit}button{cursor:pointer}
+.phone{position:relative;width:min(100%,760px);min-height:1450px;border-radius:54px;border:2px solid rgba(255,255,255,.56);overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fffdfd 100%);box-shadow:0 28px 85px rgba(0,0,0,.4),inset 0 0 0 5px rgba(255,255,255,.12);animation:screenIn .75s cubic-bezier(.2,.8,.2,1) both}
+.statusbar{height:56px;position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 42px;color:white;font-size:16px;font-weight:700;pointer-events:none}
+.status-icons{display:flex;gap:7px;align-items:center;font-size:15px}
+.hero{height:410px;position:relative;color:#fff;padding:64px 42px 36px;overflow:hidden;background:#370b27}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:saturate(.9)}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(39,0,24,.93) 0%,rgba(54,0,31,.74) 47%,rgba(38,0,23,.06) 100%),linear-gradient(0deg,rgba(44,0,28,.18),transparent 55%)}
+.topbar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-icon{width:58px;height:58px;display:grid;place-items:center;flex-shrink:0;border-radius:50%;background:linear-gradient(145deg,#d71661,#8c0034);border:3px solid #e63b7d;color:#fff;box-shadow:0 6px 18px #a5004338;font-size:23px}
+.brand-name{font-size:26px;line-height:1.1;font-weight:800;letter-spacing:-.7px;white-space:nowrap}.brand-name span{color:#ef347b}.brand-sub{font-size:12px;letter-spacing:.1px;margin-top:5px;color:#f8e9f0}
+.header-actions{display:flex;align-items:center;gap:10px}.icon-btn{width:48px;height:48px;border:1px solid #ffffff25;background:#ffffff16;color:white;border-radius:50%;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:grid;place-items:center;font-size:20px;transition:transform .2s,background .2s}.icon-btn:hover{transform:translateY(-2px);background:#ffffff2d}
+.greeting{position:relative;z-index:2;margin-top:35px;max-width:420px;animation:fadeUp .7s .12s both}
+.eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:#f7b8d1;margin:0 0 10px}
+h1{font-size:clamp(29px,5vw,39px);line-height:1.13;letter-spacing:-1.25px;margin:0 0 13px;font-weight:800;max-width:430px}
+.greeting p{font-size:16px;line-height:1.55;margin:0;color:#fff4f8;max-width:380px}
+.main-content{position:relative;z-index:3;margin-top:-15px;padding:0 42px 130px;background:linear-gradient(180deg,transparent 0 18px,#fff 18px);border-radius:34px 34px 0 0}
+.search-wrap{position:relative;margin-top:-28px;z-index:5;animation:fadeUp .7s .18s both}
+.searchbar{height:72px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid rgba(255,255,255,.95);box-shadow:0 12px 35px rgba(16,24,45,.15);display:flex;align-items:center;padding:0 24px;gap:17px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.searchbar>i{font-size:25px;color:#14233b}
+.searchbar input{border:0;outline:0;background:transparent;min-width:0;flex:1;font-size:15px;color:var(--ink)}
+.searchbar input::placeholder{color:#64758b}
+.filter-btn{border:0;background:transparent;color:var(--wine);font-size:23px;padding:8px}
+.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.action-card{min-height:94px;border:0;border-radius:18px;padding:16px 18px;display:flex;align-items:center;gap:14px;text-align:left;color:#fff;box-shadow:0 8px 18px #101d3418;transition:transform .2s,box-shadow .2s}
+.action-card:hover{transform:translateY(-3px);box-shadow:0 14px 24px #101d3425}
+.action-card.map{background:linear-gradient(110deg,#a40040,#b40d4e)}.action-card.explore{background:linear-gradient(110deg,#07162b,#172940)}
+.action-symbol{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#ffffff24;flex-shrink:0;font-size:27px}
+.action-card.explore .action-symbol{background:#f4f5fa;color:#102039}
+.action-copy{flex:1;min-width:0}.action-copy strong{display:block;font-size:15px;line-height:1.3}.action-copy small{display:block;font-size:12px;margin-top:5px;color:#fff0f5}
+.action-arrow{font-size:19px}
+.section{margin-top:38px;animation:fadeUp .65s both}.section:nth-of-type(2){animation-delay:.1s}.section:nth-of-type(3){animation-delay:.16s}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+.section-head h2{font-size:23px;letter-spacing:-.55px;margin:0;font-weight:800}
+.text-link{border:0;background:transparent;color:var(--wine);font-size:13px;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:9px;padding:8px 0}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.category{min-height:139px;border:1px solid #e4e5ec;border-radius:18px;padding:15px 15px 14px;background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(250,249,252,.72));box-shadow:0 4px 12px rgba(20,31,51,.025);text-align:left;position:relative;transition:transform .2s,border-color .2s}
+.category:hover{transform:translateY(-3px);border-color:#e4a7c0}
+.category-icon{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#fae8ef,#f5d5e3);color:var(--wine);font-size:26px;margin-bottom:10px}
+.category strong{display:block;font-size:14px;line-height:1.3;margin-bottom:6px;letter-spacing:-.2px}
+.category small{display:block;font-size:11px;color:var(--muted);line-height:1.35;padding-right:6px}
+.category .chevron{position:absolute;right:12px;bottom:26px;color:var(--wine);font-size:13px}
+.destination{display:grid;grid-template-columns: minmax(190px, 36%) 1fr auto;align-items:center;gap:20px;border:1px solid #e4e5ec;border-radius:20px;padding:12px;background:rgba(255,255,255,.78);box-shadow:0 7px 22px rgba(20,31,51,.06);transition:transform .2s}
+.destination:hover{transform:translateY(-2px)}
+.destination-image{height:160px;width:100%;object-fit:cover;border-radius:14px}
+.destination-details{min-width:0}.pill{display:inline-flex;padding:5px 10px;border-radius:999px;background:var(--wine);color:#fff;font-size:10px;font-weight:700;margin-bottom:8px}
+.destination h3{font-size:21px;letter-spacing:-.45px;margin:0 0 7px}.location{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px;margin-bottom:10px}.location i{color:var(--wine)}
+.destination p{font-size:13px;line-height:1.5;color:#4e6077;margin:0 0 12px}
+.outline-btn{border:1px solid var(--wine);border-radius:999px;background:#fff;color:#8e0035;padding:9px 15px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:10px;transition:background .2s,color .2s}.outline-btn:hover{background:var(--wine);color:#fff}
+.round-next{border:0;width:38px;height:38px;border-radius:50%;background:#f3f4f8;color:var(--wine);font-size:16px;display:grid;place-items:center}
+.trust-banner{display:flex;align-items:center;gap:18px;margin-top:22px;padding:18px 22px;border:1px solid #f0e4eb;border-radius:20px;background:linear-gradient(105deg,rgba(249,231,240,.85),rgba(250,239,245,.78));}
+.trust-icon{width:64px;height:64px;display:grid;place-items:center;flex-shrink:0;border-radius:50%;background:#f7d9e6;color:var(--wine);font-size:29px}
+.trust-copy{flex:1}.trust-copy strong{font-size:15px;display:block;margin-bottom:5px}.trust-copy p{font-size:12px;line-height:1.5;color:#4f6176;margin:0;max-width:360px}
+.bottom-nav{position:absolute;bottom:0;left:0;right:0;height:128px;z-index:9;background:rgba(4,18,37,.98);border-radius:35px 35px 0 0;padding:15px 25px 27px;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;box-shadow:0 -8px 28px rgba(8,22,42,.12)}
+.nav-item{border:0;background:transparent;color:#c7d0dd;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-width:0;font-size:12px;transition:color .2s,transform .2s}
+.nav-item i{font-size:25px}.nav-item span{font-size:12px}.nav-item.active{color:#ed1671}.nav-item.active i{filter:drop-shadow(0 0 8px #e80e6c55)}
+.nav-item.map-tab{transform:translateY(-18px);gap:8px}.map-tab .map-orb{width:78px;height:78px;display:grid;place-items:center;border-radius:50%;font-size:30px;color:#fff;background:linear-gradient(145deg,#e31c70,#9e003e);border:4px solid #f4b4cf;box-shadow:0 8px 20px #9d003d5c}.map-tab span{font-weight:700;color:#fff}
+.home-indicator{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);width:180px;height:5px;border-radius:99px;background:#e5eaf2b8;z-index:11}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#07172d;color:white;border-radius:14px;padding:12px 17px;font-size:12px;box-shadow:var(--shadow);transition:.25s;z-index:50;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes screenIn{from{opacity:0;transform:translateY(20px) scale(.985);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:900px){.phone{width:min(100%,760px)}}
+@media(max-width:650px){body{padding:0;background:#fff}.phone{width:100%;min-height:100dvh;border:0;border-radius:0;box-shadow:none;overflow:hidden}.hero{height:390px;padding:60px 22px 32px}.statusbar{padding:0 24px;height:50px}.brand-icon{width:50px;height:50px;font-size:20px}.brand-name{font-size:23px}.brand-sub{font-size:10px}.header-actions{gap:6px}.icon-btn{width:40px;height:40px;font-size:17px}.greeting{margin-top:30px;max-width:320px}.greeting p{font-size:14px}.main-content{padding:0 20px 120px}.searchbar{height:64px;padding:0 17px;gap:12px}.searchbar>i{font-size:21px}.searchbar input{font-size:12px}.filter-btn{font-size:20px}.quick-actions{gap:10px;margin-top:17px}.action-card{padding:13px 11px;gap:10px;min-height:88px;border-radius:16px}.action-symbol{width:43px;height:43px;font-size:22px}.action-copy strong{font-size:12px}.action-copy small{font-size:10px}.action-arrow{font-size:15px}.section{margin-top:31px}.section-head h2{font-size:20px}.text-link{font-size:11px}.category-grid{gap:9px}.category{padding:12px 10px;min-height:133px;border-radius:15px}.category-icon{width:46px;height:46px;font-size:21px;margin-bottom:9px}.category strong{font-size:12px}.category small{font-size:10px}.category .chevron{right:9px;bottom:19px}.destination{grid-template-columns: minmax(100px,38%) 1fr;gap:12px;padding:10px;border-radius:17px}.destination-image{height:142px}.destination h3{font-size:16px}.destination p{font-size:11px}.destination .pill{font-size:9px;margin-bottom:5px}.destination-details .location{font-size:10px;margin-bottom:7px}.outline-btn{font-size:10px;padding:8px 10px}.round-next{display:none}.trust-banner{padding:15px;gap:12px;margin-top:17px}.trust-icon{width:52px;height:52px;font-size:24px}.trust-copy strong{font-size:13px}.trust-copy p{font-size:10px}.trust-banner .text-link{max-width:80px;white-space:normal;line-height:1.3;justify-content:flex-end}.bottom-nav{height:100px;padding:10px 9px 23px;border-radius:27px 27px 0 0}.nav-item{gap:7px}.nav-item i{font-size:21px}.nav-item span{font-size:10px}.nav-item.map-tab{transform:translateY(-15px)}.map-tab .map-orb{width:62px;height:62px;font-size:24px;border-width:3px}.home-indicator{width:120px;bottom:7px}}
+@media(max-width:380px){.hero{padding-left:17px;padding-right:17px}.main-content{padding-left:14px;padding-right:14px}.brand{gap:8px}.brand-icon{width:44px;height:44px}.brand-name{font-size:20px}.header-actions .icon-btn{width:34px;height:34px}.category-grid{gap:7px}.category{padding:10px 8px}.category strong{font-size:11px}.action-card{gap:7px;padding:10px 8px}.action-symbol{width:36px;height:36px;font-size:19px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main class="phone" aria-label="InstiNexa campus discovery home">
+  <div class="statusbar"><span>9:41</span><span class="status-icons"><i class="fa-solid fa-signal"></i><i class="fa-solid fa-wifi"></i><i class="fa-solid fa-battery-full"></i></span></div>
+  <header class="hero">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1500&q=90" alt="University campus building and grounds">
+    <div class="topbar">
+      <a class="brand" href="#" aria-label="InstiNexa home">
+        <span class="brand-icon"><i class="fa-solid fa-landmark"></i></span>
+        <span><span class="brand-name">Insti<span>Nexa</span></span><span class="brand-sub" style="display:block">LAUTECH · Ogbomoso</span></span>
+      </a>
+      <div class="header-actions">
+        <button class="icon-btn" type="button" aria-label="Notifications" data-toast="Notifications will appear here when enabled."><i class="fa-regular fa-bell"></i></button>
+        <button class="icon-btn" type="button" aria-label="Open menu" data-toast="Menu panel placeholder — connect this to your navigation drawer."><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div class="greeting">
+      <div class="eyebrow">Welcome back!</div>
+      <h1>Where are you<br>headed today?</h1>
+      <p>Find buildings, departments, facilities and more on campus.</p>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="search-wrap">
+      <form class="searchbar" id="searchForm">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="campusSearch" type="search" placeholder="Search for a building, department, facility..." aria-label="Search campus locations">
+        <button class="filter-btn" type="button" aria-label="Search filters" data-toast="Search filters can be connected to campus categories."><i class="fa-solid fa-sliders"></i></button>
+      </form>
+    </div>
+    <div class="quick-actions">
+      <button class="action-card map" type="button" data-toast="Connect this button to your interactive campus map.">
+        <span class="action-symbol"><i class="fa-regular fa-map"></i></span><span class="action-copy"><strong>Open Campus Map</strong><small>View all locations</small></span><i class="fa-solid fa-arrow-right action-arrow"></i>
+      </button>
+      <button class="action-card explore" type="button" data-toast="Connect this button to the Explore Places page.">
+        <span class="action-symbol"><i class="fa-regular fa-compass"></i></span><span class="action-copy"><strong>Explore Places</strong><small>Discover campus</small></span><i class="fa-solid fa-arrow-right action-arrow"></i>
+      </button>
+    </div>
+
+    <section class="section" id="quick-access">
+      <div class="section-head"><h2>Quick Access</h2><button class="text-link" type="button" data-toast="Show all campus categories here.">See all <i class="fa-solid fa-arrow-right"></i></button></div>
+      <div class="category-grid">
+        <button class="category" type="button" data-category="Faculties"><span class="category-icon"><i class="fa-solid fa-landmark"></i></span><strong>Faculties</strong><small>Departments &amp; schools</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+        <button class="category" type="button" data-category="Lecture Theatres"><span class="category-icon"><i class="fa-solid fa-chalkboard"></i></span><strong>Lecture Theatres</strong><small>Classes &amp; events</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+        <button class="category" type="button" data-category="Laboratories"><span class="category-icon"><i class="fa-solid fa-flask"></i></span><strong>Laboratories</strong><small>Research &amp; practicals</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+        <button class="category" type="button" data-category="Libraries"><span class="category-icon"><i class="fa-solid fa-book-open"></i></span><strong>Libraries</strong><small>Books &amp; resources</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+        <button class="category" type="button" data-category="Medical Facilities"><span class="category-icon"><i class="fa-solid fa-circle-plus"></i></span><strong>Medical Facilities</strong><small>Health &amp; wellness</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+        <button class="category" type="button" data-category="ICT / CBT Centres"><span class="category-icon"><i class="fa-solid fa-computer"></i></span><strong>ICT / CBT Centres</strong><small>Computing &amp; exams</small><i class="fa-solid fa-chevron-right chevron"></i></button>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="section-head"><h2>Featured Destination</h2><button class="text-link" type="button" data-toast="Connect to the complete destinations directory.">View all <i class="fa-solid fa-arrow-right"></i></button></div>
+      <article class="destination">
+        <div style="position:relative"><img class="destination-image" src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=700&q=85" alt="Academic building on a university campus"><span class="pill" style="position:absolute;top:12px;left:12px">Faculty</span></div>
+        <div class="destination-details"><h3>Main Library</h3><div class="location"><i class="fa-solid fa-location-dot"></i> Central Roundabout</div><p>Study area, digital resources, reading spaces and more.</p><button class="outline-btn" type="button" data-toast="Connect this card to the Main Library location details.">View Location <i class="fa-solid fa-arrow-right"></i></button></div>
+        <button class="round-next" type="button" aria-label="View destination" data-toast="Connect to destination details."><i class="fa-solid fa-chevron-right"></i></button>
+      </article>
+      <aside class="trust-banner">
+        <span class="trust-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <div class="trust-copy"><strong>Campus Information</strong><p>Check available location details and verification dates.</p></div>
+        <button class="text-link" type="button" data-toast="Connect to the campus information and verification policy page.">Learn More <i class="fa-solid fa-arrow-right"></i></button>
+      </aside>
+    </section>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <button class="nav-item active" type="button" data-nav="Home" aria-current="page"><i class="fa-solid fa-house-chimney"></i><span>Home</span></button>
+    <button class="nav-item" type="button" data-nav="Explore"><i class="fa-regular fa-compass"></i><span>Explore</span></button>
+    <button class="nav-item map-tab" type="button" data-nav="Map"><span class="map-orb"><i class="fa-solid fa-location-dot"></i></span><span>Map</span></button>
+    <button class="nav-item" type="button" data-nav="Facilities"><i class="fa-solid fa-layer-group"></i><span>Facilities</span></button>
+    <button class="nav-item" type="button" data-nav="Profile"><i class="fa-regular fa-id-card"></i><span>Profile</span></button>
+  </nav>
+  <div class="home-indicator" aria-hidden="true"></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=> {
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2600)}
+  document.querySelectorAll('[data-toast]').forEach(el=>el.addEventListener('click',()=>showToast(el.dataset.toast)));
+  document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>showToast('Selected category: '+el.dataset.category)));
+  document.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click',()=>{
+    document.querySelectorAll('[data-nav]').forEach(n=>{n.classList.remove('active');n.removeAttribute('aria-current')});
+    el.classList.add('active');el.setAttribute('aria-current','page');
+    const target=el.dataset.nav;
+    if(target==='Home')window.scrollTo({top:0,behavior:'smooth'});
+    else showToast(target+' page selected — connect this tab to its route.');
+  }));
+  document.getElementById('searchForm').addEventListener('submit',e=>{
+    e.preventDefault();const q=document.getElementById('campusSearch').value.trim();
+    showToast(q?'Searching campus for “'+q+'”…':'Enter a building, department or facility to search.');
+  });
+})();
+</script>
+</body>
+</html>
